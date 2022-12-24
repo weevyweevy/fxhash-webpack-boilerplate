@@ -9,10 +9,10 @@
 // PREPARE A RESIZEABLE GRID SYSTEM
 // It is strongly recommended that you use a dimensionless approach from the start
 // You will see how this is used later in the code
-let g = 0;  // will hold size of grid
-let c = 0;  // will hold grid cell
-let q = 0;  // will hold grid micro-cell
-let v = 0;  // will grid nano-cell
+let canvas = 0;  // will hold size of grid
+let canvasDivTen = 0;  // will hold grid cell
+let canvasDivHun = 0;  // will hold grid micro-cell
+let canvasDivTho = 0;  // will grid nano-cell
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -45,8 +45,8 @@ function setup()
   // Initialize Grid System & Setup Canvas
   // the createCanvas and background statements are a standard part
   // of any p5.js project - the grid system is a recommendation
-  setupGrid(1);       // use explained in the definition of the function 
-  createCanvas(g,g);  // see the function setUpGrid below to understand the importance
+  setupCanvas(1);       // use explained in the definition of the function 
+  createCanvas(canvas,canvas);  // see the function setUpGrid below to understand the importance
                       // of using a variable here rather than a fixed numeral
   background(10,0,100,100); // set color of background; I'm using white
 }
@@ -77,9 +77,9 @@ function draw()
   // This allows them to redraw properly as the grid is resized.  See 
   // the setUpGrid function below for definitions of the variables g and q.
   stroke(10, 100, 0, 100);
-  let x = g/2;
-  let y = g/2;
-  let r = 10*q;
+  let x = canvas/2;
+  let y = canvas/2;
+  let r = 10*canvasDivHun;
   ellipse(x, y, r);
 
  
@@ -119,7 +119,7 @@ function draw()
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++
 // STANDARD TEMPLATE FUNCTIONS - INCLUDE IN ALL PROJECTS
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++
-function setupGrid(m)
+function setupCanvas(multiplier)
 {
   // m, the value passed into the function, is a multiplier used to scale the 
   // canvas for saving hi res output - see the keyPressed function below.
@@ -137,10 +137,10 @@ function setupGrid(m)
   
   // you can read more about buildding dimensionless projects at
   // https://www.fxhash.xyz/article/how-to-create-a-dimensionless-project-with-p5js
-  g = min(windowWidth, windowHeight) * m; 
-  c = g/10;   // grid cell
-  q = g/100;  // grid micro-cell
-  v = g/1000; // grid nano-cell
+  canvas = min(windowWidth, windowHeight) * multiplier; 
+  canvasDivTen = canvas/10;   // grid cell
+  canvasDivHun = canvas/100;  // grid micro-cell
+  canvasDivTho = canvas/1000; // grid nano-cell
   // the point of these divisions of the grid is that if you want
   // 1) to offer a work that scales to the window size of the viewer without any
   //    loss of quality, and
@@ -170,8 +170,8 @@ function keyPressed()
 {  
   if (key == 's' || key == 'S')
    {
-    setupGrid(5);
-    resizeCanvas(g,g);
-    saveCanvas('wandaOliver_' + seed, 'png');
+    setupCanvas(5);
+    resizeCanvas(canvas,canvas);
+    saveCanvas('GenevaLeeRobles_2023_' + seed, 'png');
    }
 }
