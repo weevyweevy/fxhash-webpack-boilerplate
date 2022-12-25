@@ -15,16 +15,16 @@ console.log(fxrand()) // deterministic PRNG function, use it instead of Math.ran
 // [https://fxhash.xyz/articles/guide-mint-generative-token#features]
 //
  window.$fxhashFeatures = {
-   "Background": "Black",
-   "Number of lines": 10,
+   "period": period, 
+   "Number of waves": num,
     "Inverted": true
  }
 
 // this code writes the values to the DOM as an example
 const container = document.createElement("div")
 container.innerText = `
-  random hash: ${fxhash}\n
-  some pseudo random values: [ ${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()},... ]\
- background = ${fxhash["Background"]}; 
+  random hash: ${fxhash}\n 
+  period: ${fxhashFeatures["period"]};\n
+  number of waves: ${fxhashFeatures["number of waves"]};\n 
 `
 document.body.prepend(container)
